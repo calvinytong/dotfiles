@@ -1,0 +1,19 @@
+[user]
+    email = calvinytong@gmail.com
+    name = calvinytong
+[color]
+    ui = auto
+[push]
+    default = simple
+[alias]
+    unstage = reset HEAD --
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+[alias]
+    g = log --date-order --graph --pretty=format:'%Cred%h%Creset %ae %C(yellow)%d%Creset - %s' --abbrev-commit
+[merge]
+    tool = meld
+[core]
+    editor = vim~
