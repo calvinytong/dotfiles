@@ -3,7 +3,7 @@ if &compatible
 endif
 
 " Automatic installation
-if empty(glob('~/.local/share/nvim/plugged'))
+if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -17,7 +17,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'icymind/NeoSolarized'
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', {'build': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -28,6 +27,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'zchee/deoplete-jedi'
+Plug 'scrooloose/nerdcommenter'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'google/vim-searchindex'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -164,15 +168,6 @@ set incsearch
 set termguicolors
 colo NeoSolarized
 
-let g:lightline = {
-  \'colorscheme': 'seoul256',
-  \'active': {'left': [['paste'],
-  \                    ['gitbranch', 'readonly', 'filename', 'modified']]},
-  \'component_function': {
-  \  'gitbranch': 'fugitive#head'}
-  \}
-
-
 " ----- formatting and linting -----
 
 let g:neoformat_enabled_python=['yapf']
@@ -195,7 +190,7 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
 let g:ale_linters = {
-  \'python': ['flake8']
+  \'python': ['flake8', 'mypy']
 \}
 
 
@@ -210,7 +205,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
 let g:LanguageClient_serverCommands = {
-      \ 'python': ['pyls']
+      \ 'python': ['pyls'],
       \ }
 
 let g:LanguageClient_autoStart = 1
@@ -219,3 +214,24 @@ let g:LanguageClient_trace = 'verbose'
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" ----- comments -----
+filetype plugin on
+
+" add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" allow commenting and inverting empty lines
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" ----- status bar -----
+let g:airline_theme = 'solarized'
