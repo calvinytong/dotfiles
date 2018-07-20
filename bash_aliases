@@ -1,18 +1,7 @@
-# system aliases
-alias df="df -Tha --total"
-alias free="free -mt"
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias histg="history | grep"
+# time for my aliases...
+alias c='clear'
 alias h='cd $HOME'
 
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias c='clear'
-
-# git aliases
 alias ga='git add'
 alias gbl='git blame'
 alias gb='git branch'
@@ -21,6 +10,7 @@ alias gcm='git commit -m'
 alias gco='git checkout'
 alias gd='git diff'
 alias gf='git fetch'
+alias gfp='git fetch --prune'
 alias gl='git log'
 alias gm='git merge'
 alias gpl='git pull'
@@ -32,8 +22,7 @@ alias gsa='git stash apply'
 alias gst='git stash'
 alias gsp='git stash pop'
 
-# docker aliases
-alias dockerka='docker kill $(docker ps -q)'
-alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
-alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
-alias dockerclean='dockercleanc || true && dockercleani'
+alias sa='source activate'
+
+alias vi='nvim'
+alias vim='nvim'
