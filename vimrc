@@ -20,7 +20,6 @@ Plug 'icymind/NeoSolarized'
 Plug 'junegunn/fzf', {'build': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
@@ -170,16 +169,21 @@ colo NeoSolarized
 
 " ----- formatting and linting -----
 
-let g:neoformat_enabled_python=['yapf']
+let g:ale_linters = {
+  \'python': ['flake8', 'mypy'],
+  \'typescript': ['tslint']
+\}
 
-augroup fmt
-    autocmd!
-    autocmd BufWritePre * Neoformat
-    autocmd BufWritePre * :call ale#Lint()
-augroup END
+let g:ale_fixers = {'typescript': ['prettier'], 'python': ['yapf']}
 
+" don't lint on text change or file entry
 let g:ale_lint_on_text_changed='never'
 let g:ale_lint_on_enter=0
+
+" lint and fix on save
+let g:ale_lint_on_save=1
+let g:ale_fix_on_save=1
+
 let g:ale_echo_cursor=0
 
 let g:ale_set_loclist = 0
@@ -189,15 +193,9 @@ let g:ale_open_list=1
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
-let g:ale_linters = {
-  \'python': ['flake8', 'mypy']
-\}
-
-
 " ----- autocomplete and LSP -----
 
 let g:deoplete#enable_at_startup=1
-" let g:deoplete#enable_smart_case=1
 
 
 " use TAB to manually autocomplete with deoplete
@@ -211,6 +209,7 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_trace = 'verbose'
 
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
@@ -226,9 +225,6 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
