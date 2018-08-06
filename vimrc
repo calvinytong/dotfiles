@@ -31,7 +31,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
 Plug 'sheerun/vim-polyglot'
-
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
