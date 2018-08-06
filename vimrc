@@ -171,10 +171,15 @@ colo NeoSolarized
 
 let g:ale_linters = {
   \'python': ['flake8', 'mypy'],
-  \'typescript': ['tslint']
+  \'typescript': ['tslint'],
+  \'yaml': ['yamllint']
 \}
 
-let g:ale_fixers = {'typescript': ['prettier'], 'python': ['yapf']}
+let g:ale_fixers = {
+  \'typescript': ['prettier'],
+  \'python': ['yapf'],
+  \'yaml': ['prettier']
+\}
 
 " don't lint on text change or file entry
 let g:ale_lint_on_text_changed='never'
@@ -217,8 +222,6 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " ----- comments -----
 filetype plugin on
 
-" add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
 
 " allow commenting and inverting empty lines
 let g:NERDCommentEmptyLines = 1
@@ -231,3 +234,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " ----- status bar -----
 let g:airline_theme = 'solarized'
+
+" ----- language specific formatting -----
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
