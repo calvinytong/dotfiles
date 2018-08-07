@@ -110,21 +110,12 @@ let g:NERDTreeWinSize = 30
 set autoindent
 set smartindent
 set expandtab
-" set smarttab
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
+set scrolloff=5
 
-au BufRead,BufNewFile *.py set ts=4 sts=4 sw=4
 
-
-autocmd FileType cmake setlocal ts=4 sts=4 sw=4
-autocmd FileType dockerfile setlocal nolist noexpandtab
-autocmd FileType go setlocal nolist noexpandtab
-autocmd FileType make setlocal nolist noexpandtab
-
-autocmd BufNewFile,Bufread *.s set ft=asm
-autocmd FileType asm setlocal nolist noexpandtab
 
 
 " ----- fzf -----
@@ -222,7 +213,6 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " ----- comments -----
 filetype plugin on
 
-
 " allow commenting and inverting empty lines
 let g:NERDCommentEmptyLines = 1
 
@@ -236,5 +226,33 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:airline_theme = 'solarized'
 
 " ----- language specific formatting -----
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal expandtab
+    \ tabstop=2
+    \ sts=2
+    \ sw=2
 
+autocmd Filetype python setlocal expandtab
+    \ textwidth=79
+    \ shiftwidth=4
+    \ tabstop=4
+
+autocmd Filetype c setlocal noexpandtab
+    \ softtabstop=8
+    \ shiftwidth=8
+    \ tabstop=8
+
+autocmd Filetype ruby setlocal expandtab
+    \ tabstop=2
+    \ shiftwidth=2
+    \ textwidth=79
+
+autocmd Filetype cpp setlocal noexpandtab
+    \ shiftwidth=2
+    \ tabstop=2
+
+autocmd FileType cmake setlocal ts=4 sts=4 sw=4
+autocmd FileType dockerfile setlocal nolist noexpandtab
+autocmd FileType go setlocal nolist noexpandtab
+autocmd FileType make setlocal nolist noexpandtab
+
+autocmd BufNewFile,Bufread *.s set ft=asm
