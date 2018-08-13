@@ -256,3 +256,13 @@ autocmd FileType go setlocal nolist noexpandtab
 autocmd FileType make setlocal nolist noexpandtab
 
 autocmd BufNewFile,Bufread *.s set ft=asm
+
+" ----- cut and paste -----
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+

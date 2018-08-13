@@ -1,6 +1,7 @@
 # time for my aliases...
 alias c='clear'
 alias h='cd $HOME'
+alias histg="history | grep"
 
 alias ga='git add'
 alias gbl='git blame'
