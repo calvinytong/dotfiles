@@ -1,6 +1,6 @@
 [user]
-	email = calvinytong@gmail.com
-	name = calvinytong
+    email = calvinytong@gmail.com
+    name = calvinytong
 [color]
     ui = auto
 [push]
@@ -15,5 +15,7 @@
     g = log --date-order --graph --pretty=format:'%Cred%h%Creset %ae %C(yellow)%d%Creset - %s' --abbrev-commit
 [merge]
     tool = meld
+[core]
+    editor = vim
 
 
