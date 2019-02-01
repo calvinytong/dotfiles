@@ -149,7 +149,9 @@ set incsearch
 " ----- appearance -----
 
 set termguicolors
-colo NeoSolarized
+color NeoSolarized
+set background=light
+
 
 " ----- formatting and linting -----
 
