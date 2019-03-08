@@ -248,7 +248,8 @@ autocmd Filetype cpp setlocal noexpandtab
 autocmd FileType cmake setlocal ts=4 sts=4 sw=4
 autocmd FileType dockerfile setlocal nolist noexpandtab
 autocmd FileType go setlocal nolist noexpandtab
-autocmd FileType make setlocal nolist noexpandtab
+autocmd FileType make setlocal noexpandtab shiftwidth=8 softtabstop=0 nolist
+autocmd FileType sh setlocal nolist
 
 autocmd BufNewFile,Bufread *.s set ft=asm
 
