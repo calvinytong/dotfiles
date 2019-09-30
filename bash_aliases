@@ -25,6 +25,7 @@ alias gsp='git stash pop'
 
 alias sa='source activate'
 alias sd='source deactivate'
+alias ca='conda activate'
 
 alias vi='nvim'
 alias vim='nvim'
