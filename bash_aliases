@@ -31,3 +31,5 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias sl='sl -asFl'
+
+alias k='kubectl'
