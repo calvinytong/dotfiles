@@ -1,6 +1,6 @@
 [user]
-    email = calvinytong@gmail.com
-    name = calvinytong
+	email = calvinytong@gmail.com
+	name = calvin
 [color]
     ui = auto
 [push]
@@ -19,3 +19,8 @@
     editor = vim
 
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

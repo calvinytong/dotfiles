@@ -3,7 +3,6 @@ if &compatible
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -25,8 +24,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()
-
 
 " ----- Editing files and buffers -----
 
@@ -39,13 +38,11 @@ let mapleader=","
 nmap ; :
 :imap jj <Esc>
 
-
 set autoread
 set hidden
 set title
 set noswapfile
 set nobackup
-" set nowb
 
 set backspace=indent,eol,start
 
@@ -55,7 +52,6 @@ set history=1000
 set undolevels=1000
 
 set visualbell
-
 
 " ----- window -----
 
@@ -108,9 +104,6 @@ set softtabstop=4
 set shiftwidth=4
 set scrolloff=5
 
-
-
-
 " ----- fzf -----
 
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -145,13 +138,11 @@ set ignorecase
 set smartcase
 set incsearch
 
-
 " ----- appearance -----
 
 set termguicolors
 color NeoSolarized
 set background=light
-
 
 " ----- formatting and linting -----
 
@@ -164,7 +155,6 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \'typescript': ['prettier'],
   \'python': ['yapf'],
-  \'yaml': ['prettier']
 \}
 
 " don't lint on text change or file entry
@@ -221,6 +211,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:airline_theme = 'solarized'
 
 " ----- language specific formatting -----
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal expandtab
     \ tabstop=2
     \ sts=2
@@ -246,9 +237,13 @@ autocmd Filetype cpp setlocal noexpandtab
     \ tabstop=2
 
 autocmd FileType cmake setlocal ts=4 sts=4 sw=4
+
 autocmd FileType dockerfile setlocal nolist noexpandtab
+
 autocmd FileType go setlocal nolist noexpandtab
+
 autocmd FileType make setlocal noexpandtab shiftwidth=8 softtabstop=0 nolist
+
 autocmd FileType sh setlocal nolist
 
 autocmd BufNewFile,Bufread *.s set ft=asm
