@@ -24,7 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-searchindex'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
 " ----- Editing files and buffers -----
@@ -211,7 +211,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:airline_theme = 'solarized'
 
 " ----- language specific formatting -----
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal expandtab
     \ tabstop=2
     \ sts=2
