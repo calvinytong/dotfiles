@@ -1,9 +1,7 @@
 #!/bin/sh
 
-brew install curl htop python3 python3-pip tmux vim wget
+brew install curl htop python3 python3-pip tmux vim wget fish
 
-curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
 
 brew install neovim
 pip3 install neovim

@@ -217,7 +217,8 @@ autocmd FileType yaml setlocal expandtab
     \ sw=2
 
 autocmd Filetype python setlocal expandtab
-    \ textwidth=79
+    \ textwidth=0
+    \ wrapmargin=0
     \ shiftwidth=4
     \ tabstop=4
 
