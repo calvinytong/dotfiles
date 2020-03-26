@@ -1,6 +1,6 @@
 #!/bin/sh
 
-brew install curl htop python3 python3-pip tmux vim wget fish
+brew install curl htop python3 python3-pip tmux vim wget fish ncdu
 
 
 brew install neovim
